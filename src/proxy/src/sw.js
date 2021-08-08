@@ -187,7 +187,7 @@ async function getUrlByClientId(id) {
  * @param {number} status 
  * @param {URL} urlObj 
  */
-function parseGatewayError(jsonStr, status, urlObj) {
+async function parseGatewayError(jsonStr, status, urlObj) {
   let ret = ''
   const {
     msg, addr, url
@@ -207,6 +207,16 @@ function parseGatewayError(jsonStr, status, urlObj) {
       break
     }
     break
+  case 401:
+    // proxy gateway require authentication
+    const success = await global.registration.unregister()
+    if (success) {
+      ret = '代理服务器需要鉴权，正在自动重试……'
+      location.reload()
+    } else {
+      ret = '代理服务器需要鉴权，请清除网站缓存后重试'
+    }
+    break;
   case 500:
     ret = '代理服务器内部错误'
     break
@@ -273,7 +283,7 @@ async function forward(req, urlObj, cliUrlObj, redirNum) {
   // 网关错误
   const gwErr = headers.get('gateway-err--')
   if (gwErr) {
-    return parseGatewayError(gwErr, status, urlObj)
+    return await parseGatewayError(gwErr, status, urlObj)
   }
 
   /** @type {ResponseInit} */
