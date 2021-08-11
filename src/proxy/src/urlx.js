@@ -195,6 +195,7 @@ export function replaceHttpRefresh(val, relObj) {
  *  https://www.google.com/search?q=xxx
  */
 const DEFAULT_ALIAS = {
+  'duckduckgo.com': ['duckduckgo', 'ddg', 'dd', 'd'],
   'www.google.com': ['google', 'gg', 'g'],
   'www.youtube.com': ['youtube', 'yt', 'y'],
   'www.wikipedia.org': ['wikipedia', 'wiki', 'wk', 'w'],
@@ -202,7 +203,7 @@ const DEFAULT_ALIAS = {
   'twitter.com': ['twitter', 'tw', 't'],
 }
 
-const DEFAULT_SEARCH = 'https://www.google.com/search?q=%s'
+const DEFAULT_SEARCH = 'https://duckduckgo.com/?q=%s'
 
 /** @type {Map<string, string>} */
 let aliasDomainMap
