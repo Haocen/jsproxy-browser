@@ -211,8 +211,7 @@ async function parseGatewayError(jsonStr, status, urlObj) {
     // proxy gateway require authentication
     const success = await global.registration.unregister()
     if (success) {
-      ret = '代理服务器需要鉴权，正在自动重试……'
-      location.reload()
+      ret = '<script>window.location.reload()</script>代理服务器需要鉴权，正在自动重试……'
     } else {
       ret = '代理服务器需要鉴权，请清除网站缓存后重试'
     }
