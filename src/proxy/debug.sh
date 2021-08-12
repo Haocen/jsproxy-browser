@@ -1,3 +1,4 @@
-webpack \
-  --o "../home/assets/bundle.debug.js" \
+npx webpack \
+  -o "../home/assets/" \
+  --output-filename "bundle.debug.js" \
   --mode development -w

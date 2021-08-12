@@ -1,9 +1,10 @@
 DST=../../www/assets
 
-rm $DST/bundle.*.js
+rm -rf $DST/bundle.*.js
 
-webpack \
-  --o "$DST/bundle.[hash:8].js" \
+npx webpack \
+  -o "$DST/" \
+  --output-filename "bundle.[chunkhash:8].js" \
   --mode production
 
 cd $DST
