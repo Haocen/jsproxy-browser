@@ -203,7 +203,7 @@ const DEFAULT_ALIAS = {
   'twitter.com': ['twitter', 'tw', 't'],
 }
 
-const DEFAULT_SEARCH = 'https://duckduckgo.com/?q=%s'
+const DEFAULT_SEARCH = 'https://duckduckgo.com/?q=!g%20%s'
 
 /** @type {Map<string, string>} */
 let aliasDomainMap
